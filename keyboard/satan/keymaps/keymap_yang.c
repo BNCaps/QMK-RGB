@@ -8,89 +8,51 @@
 // Layer names don't all need to be of the same length, obviously, and you can also skip them
 // entirely and just use numbers.
 #define _BW 0
-#define _BM 1
-#define _FL 2
-#define _MV 3
+#define _FL 1
+// #define _MV 3
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* Keymap _BW: (Base Windows) Windows Default Layer
    * ,-----------------------------------------------------------.
-   * |Esc~| 1|  2|  3|  4|  5|  6|  7|  8|  9|  0|  -|  =|Backsp |
+   * |Esc~| 1|  2|  3|  4|  5|  6|  7|  8|  9|  0|  -|  =|Backsp|Backsp (!!!NOTE!!! THE RIGHT MOST BUTTON ON THE SPLIT BS IS k49 on the grid (satan.h)!!|
    * |-----------------------------------------------------------|
    * |Tab  |  Q|  W|  E|  R|  T|  Y|  U|  I|  O|  P|  [|  ]|    \|
    * |-----------------------------------------------------------|
    * |CAPS/FL|  A|  S|  D|  F|  G|  H|  J|  K|  L|  ;|  '|Return |
    * |-----------------------------------------------------------|
-   * |Shift   |  Z|  X|  C|  V|  B|  N|  M|  ,|  .|  /|Shift     |
+   * |Shift|shift   |  Z|  X|  C|  V|  B|  N|  M|  ,|  .|  /|Shift  |Backlight step|
    * |-----------------------------------------------------------|
-   * |Ctrl|Gui |Alt |      Space            |Alt |Gui |CTRL| _MV |
+   * |Ctrl|Gui |Alt |      Space            |Alt |FN  |CTRL      |
    * `-----------------------------------------------------------'
-   */
+   *
+*/
 [_BW] = KEYMAP(
-  F(0),    KC_1,   KC_2,   KC_3,   KC_4,   KC_5,   KC_6,   KC_7,   KC_8,   KC_9,   KC_0,   KC_MINS,  KC_EQL,   KC_BSPC, \
-  KC_TAB,  KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,   KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,   KC_LBRC,  KC_RBRC,  KC_BSLS, \
-  F(11),   KC_A,   KC_S,   KC_D,   KC_F,   KC_G,   KC_H,   KC_J,   KC_K,   KC_L,   KC_SCLN,KC_QUOT,            KC_ENT,  \
-  KC_LSFT,         KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,   KC_N,   KC_M,   KC_COMM,KC_DOT, KC_SLSH,            KC_RSFT, \
-  KC_LCTL, KC_LGUI,KC_LALT,          KC_SPC,                                       KC_RALT,KC_RGUI,  KC_RCTL,  F(9)),
-  /* Keymap _BM: (Base Mac) Mac Default Layer
-   * ,-----------------------------------------------------------.
-   * |Esc~| 1|  2|  3|  4|  5|  6|  7|  8|  9|  0|  -|  =|Backsp |
-   * |-----------------------------------------------------------|
-   * |Tab  |  Q|  W|  E|  R|  T|  Y|  U|  I|  O|  P|  [|  ]|    \|
-   * |-----------------------------------------------------------|
-   * |CAPS/FL|  A|  S|  D|  F|  G|  H|  J|  K|  L|  ;|  '|Return |
-   * |-----------------------------------------------------------|
-   * |Shift   |  Z|  X|  C|  V|  B|  N|  M|  ,|  .|  /|Shift     |
-   * |-----------------------------------------------------------|
-   * |Ctrl|Alt |Gui |      Space            |Gui |Alt |CTRL |_FL |
-   * `-----------------------------------------------------------'
-   */
-[_BM] = KEYMAP(
-  F(0),    KC_1,   KC_2,   KC_3,   KC_4,   KC_5,   KC_6,   KC_7,   KC_8,   KC_9,   KC_0,   KC_MINS,  KC_EQL,   KC_BSPC, \
-  KC_TAB,  KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,   KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,   KC_LBRC,  KC_RBRC,  KC_BSLS, \
-  F(11),   KC_A,   KC_S,   KC_D,   KC_F,   KC_G,   KC_H,   KC_J,   KC_K,   KC_L,   KC_SCLN,KC_QUOT,            KC_ENT,  \
-  KC_LSFT,         KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,   KC_N,   KC_M,   KC_COMM,KC_DOT, KC_SLSH,            KC_RSFT, \
-  KC_LCTL, KC_LALT,KC_LGUI,          KC_SPC,                                       KC_RGUI,KC_RALT,  KC_RCTL,  F(9)),
+  F(0),    KC_1,    KC_2,   KC_3,   KC_4,   KC_5,   KC_6,   KC_7,   KC_8,   KC_9,    KC_0,     KC_MINS,  KC_EQL,   KC_BSPC, \
+  KC_TAB,  KC_Q,    KC_W,   KC_E,   KC_R,   KC_T,   KC_Y,   KC_U,   KC_I,   KC_O,    KC_P,     KC_LBRC,  KC_RBRC,  KC_BSLS, \
+  KC_CAPS, KC_A,    KC_S,   KC_D,   KC_F,   KC_G,   KC_H,   KC_J,   KC_K,   KC_L,    KC_SCLN,  KC_QUOT,            KC_ENT, \
+  KC_LSFT, KC_LSFT, KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,   KC_N,   KC_M,   KC_COMM, KC_DOT,   KC_SLSH,  BL_STEP,  KC_RSFT, \
+  KC_LCTL, KC_LGUI, KC_LALT,          KC_SPC,                               KC_BSPC, KC_TRNS,  KC_RALT,  MO(1),    KC_RCTL),
+
   /* Keymap _FL: Function Layer
    * ,-----------------------------------------------------------.
    * |  `| F1| F2| F3| F4| F5| F6| F7| F8| F9|F10|F11|F12|Delete |
    * |-----------------------------------------------------------|
-   * |     |   |Up |   |Cal|Ins|   |PgUp|  |   |Psc|Slk|Pau|     |
+   * |  |  |Up | f(1)|f(2)|f(3)|f(4)|f(5)|f(6)|f(7)|f(8)|BL_DEC|BL_INC|BL_TOGG|
    * |-----------------------------------------------------------|
-   * |      |Lef|Dow|Rig|   |Hom|Lef|Dow|Up |Rig|End|   |        |
+   * |  |Lef|Dow|Rig|   |   |   |   |  |     |home| pgup|BL_STEP |
    * |-----------------------------------------------------------|
-   * |        |BL-|BL |BL+|F1 |  |PgDn|   |VoD|Mut|VoU|   PgUp   |
+   * |   |    |    |  |  |  |  |   |   |   | end| pgdn |     |   |
    * |-----------------------------------------------------------|
-   * |    |    |    |                        |App |Home|PgDn|End |
+   * |    |    |    |                              |     |   |   |
    * `-----------------------------------------------------------'
    */
-[_FL] = KEYMAP(
-  KC_GRV, KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5,  KC_F6,  KC_F7,  KC_F8,   KC_F9,     KC_F10,    KC_F11,    KC_F12,    KC_DEL,  \
-  KC_TRNS,KC_TRNS,KC_UP,  KC_TRNS,KC_CALC,KC_INS, KC_TRNS,KC_PGUP,KC_TRNS, KC_TRNS,   KC_PSCR,   KC_SLCK,   KC_PAUS,   KC_TRNS, \
-  KC_TRNS,KC_LEFT,KC_DOWN,KC_RGHT,KC_TRNS,KC_HOME,KC_LEFT,KC_DOWN,KC_UP,   KC_RGHT,   KC_END,    KC_TRNS,              KC_TRNS, \
-  KC_TRNS,        BL_DEC, BL_TOGG,BL_INC, M(0),   KC_TRNS,KC_PGDN,KC_TRNS, KC_VOLD,   KC_MUTE,   KC_VOLU,              KC_PGUP, \
-  KC_TRNS,KC_TRNS,KC_TRNS,          KC_TRNS,                               KC_APP,    KC_HOME,   KC_PGDN,              KC_END),
-  /* Keymap 3: Fn1 Layer
-   * ,-----------------------------------------------------------.
-   * |   |   |   |   |   |   |   |   |   |   |   |   |   |       |
-   * |-----------------------------------------------------------|
-   * |     |   |Up |   |   |   |   |   |   |   |   |BL-|BL+|BL   |
-   * |-----------------------------------------------------------|
-   * |      |Lef|Dow|Rig|   |Hom|Lef|Dow|Up |Rig|End|   |        |
-   * |-----------------------------------------------------------|
-   * |        | F1|F2 | F3|F4 | F5| F6| F7| F8|   |   |Up        |
-   * |-----------------------------------------------------------|
-   * |    |    |    |         FN9            |    |Left|Down|Rig |
-   * `-----------------------------------------------------------'
-   */
-[_MV] = KEYMAP(
-  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO, \
-  KC_NO,  KC_NO,  KC_UP,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  BL_DEC, BL_INC, BL_TOGG, \
-  KC_NO,  KC_LEFT,KC_DOWN,KC_RGHT,KC_NO,  KC_HOME,KC_LEFT,KC_DOWN,KC_UP,  KC_RGHT,KC_END, KC_NO,          KC_NO, \
-  KC_NO,          F(1),   F(2),   F(3),   F(4),   F(5),   F(6),   F(7),   F(8),   KC_NO,  KC_NO,          KC_UP, \
-  KC_NO,  KC_NO,  KC_NO,         KC_TRNS,                                         F(10),  KC_LEFT,KC_DOWN,KC_RGHT),
-
-
+ [_FL] = KEYMAP(
+   KC_GRV,  KC_F1,   KC_F2,     KC_F3,    KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,     KC_F10,    KC_F11,    KC_F12,    KC_DEL,  \
+   KC_TRNS, KC_TRNS, KC_UP,     F(1),     F(2),    F(3),    F(4),    F(5),    F(6),    F(7),      F(8),      BL_DEC,    BL_INC,    BL_TOGG, \
+   KC_TRNS, KC_LEFT, KC_DOWN,   KC_RGHT,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,   KC_HOME,   KC_PGUP,              BL_STEP, \
+   KC_TRNS, KC_TRNS, KC_TRNS,   KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_VOLD, KC_VOLU, KC_MUTE,   KC_END,    KC_PGDN,   KC_TRNS,   KC_TRNS, \
+   KC_TRNS, KC_TRNS, KC_TRNS,          KC_TRNS,                                        KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS),
+ 
 };
 
 
@@ -116,9 +78,9 @@ const uint16_t PROGMEM fn_actions[] = {
   [6]  = ACTION_FUNCTION(RGBLED_DECREASE_SAT),
   [7]  = ACTION_FUNCTION(RGBLED_INCREASE_VAL),
   [8]  = ACTION_FUNCTION(RGBLED_DECREASE_VAL),
-  [9]  = ACTION_LAYER_ON(_MV, ON_PRESS),
-  [10] = ACTION_LAYER_OFF(_MV, ON_PRESS),
-  [11] = ACTION_LAYER_TAP_KEY(_FL, KC_CAPS),
+//  [9]  = ACTION_LAYER_ON(_FL, ON_PRESS),
+//  [10] = ACTION_LAYER_OFF(_FL, ON_PRESS),
+//  [11] = ACTION_LAYER_TAP_KEY(_FL, KC_CAPS),
 };
 
 #define MODS_CTRL_MASK  (MOD_BIT(KC_LSHIFT)|MOD_BIT(KC_RSHIFT))

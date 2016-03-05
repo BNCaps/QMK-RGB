@@ -1,4 +1,4 @@
-/*
+        /*
 Copyright 2012 Jun Wako <wakojun@gmail.com>
 
 This program is free software: you can redistribute it and/or modify
@@ -24,11 +24,11 @@ void led_set(uint8_t usb_led)
 {
     if (usb_led & (1<<USB_LED_CAPS_LOCK)) {
         // output low
-        DDRF |= (1<<0);
-        PORTF &= ~(1<<0);
+        DDRB |= (1<<2);
+        PORTB &= ~(1<<2);
     } else {
         // Hi-Z
-        DDRF &= ~(1<<0);
-        PORTF &= ~(1<<0);
+        DDRB &= ~(1<<2);
+        PORTB &= ~(1<<2);
     }
 }

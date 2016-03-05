@@ -18,27 +18,52 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef CONFIG_H
 #define CONFIG_H
 
+#include "config_common.h"
 
 /* USB Device descriptor parameter */
-#define VENDOR_ID       0xC1ED
-#define PRODUCT_ID      0x2301
-#define DEVICE_VER      0x0001
-#define MANUFACTURER    Clued
-#define PRODUCT         Clueboard
-#define DESCRIPTION     t.m.k. keyboard firmware for Clueboard
+#define VENDOR_ID       0xFEED
+#define PRODUCT_ID      0x6060
+#define DEVICE_VER      0x0003
+#define MANUFACTURER    CLUEBOARD
+#define PRODUCT         CLUEBOARD RGB MOD
+#define DESCRIPTION     QMK keyboard firmware for Clueboard with WS2812 support
 
 /* key matrix size */
 #define MATRIX_ROWS 5
 #define MATRIX_COLS 16
 
+// Planck PCB default pin-out
+// Change this to how you wired your keyboard
+// COLS: Left to right, ROWS: Top to bottom
+
+/* Column pin configuration
+ * col: 0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15
+ * pin: B3, F1, F4, F5, F6, C7, C6, B6, B5, B4, D7, D6, D4, F7, B0, B1
+ */
+// ORIGINAL #define COLS (int []){ F0, F1, E6, C7, C6, B7, D4, B1, B0, B5, B4, D7, D6, B3 }
+#define COLS (int []){ B3, F1, F4, F5, F6, C7, C6, B6, B5, B4, D7, D6, D4, F7, B0, B1 }
+
+ /* Row pin configuration
+ * row: 0  1  2  3  4
+ * pin: D1, D0, D2, D5, D3
+ */
+// ORIGINAL #define ROWS (int []){ D0, D1, D2, D3, D5 }
+#define ROWS (int []){ D1, D0, D2, D5, D3 }
+
+/* COL2ROW or ROW2COL */
+#define DIODE_DIRECTION COL2ROW
+
 /* define if matrix has ghost */
 //#define MATRIX_HAS_GHOST
+
+/* number of backlight levels */
+#define BACKLIGHT_LEVELS 5
 
 /* Set 0 if debouncing isn't needed */
 #define DEBOUNCE    5
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
-#undef LOCKING_SUPPORT_ENABLE
+#define LOCKING_SUPPORT_ENABLE
 /* Locking resynchronize hack */
 #define LOCKING_RESYNC_ENABLE
 
@@ -47,6 +72,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     keyboard_report->mods == (MOD_BIT(KC_LSHIFT) | MOD_BIT(KC_RSHIFT)) \
 )
 
+/* ws2812 RGB LED */
+#define ws2812_PORTREG  PORTE
+#define ws2812_DDRREG   DDRE
+#define ws2812_pin PE2
+#define RGBLED_NUM 8     // Number of LEDs
+#ifndef RGBLIGHT_HUE_STEP
+#define RGBLIGHT_HUE_STEP 10
+#endif
+#ifndef RGBLIGHT_SAT_STEP
+#define RGBLIGHT_SAT_STEP 17
+#endif
+#ifndef RGBLIGHT_VAL_STEP
+#define RGBLIGHT_VAL_STEP 17
+#endif
 
 
 /*
@@ -55,10 +94,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 /* disable debug print */
-//#define NO_DEBUG
+#define NO_DEBUG
 
 /* disable print */
-//#define NO_PRINT
+#define NO_PRINT
 
 /* disable action features */
 //#define NO_ACTION_LAYER

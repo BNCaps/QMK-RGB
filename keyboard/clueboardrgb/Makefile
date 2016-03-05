@@ -39,8 +39,8 @@
 #----------------------------------------------------------------------------
 
 # Target file name (without extension).
+TARGET = clueboardrgb
 
-TARGET = clueboard
 
 # Directory common source filess exist
 TOP_DIR = ../..
@@ -49,20 +49,18 @@ TMK_DIR = ../../tmk_core
 # Directory keyboard dependent files exist
 TARGET_DIR = .
 
-# project specific files
-SRC =	keymap_common.c \
-	matrix.c \
-	led.c \
-	backlight.c
+# # project specific files
+SRC = clueboardrgb.c \
+			led.c \
+			backlight.c
 
 ifdef KEYMAP
-    SRC := keymap_$(KEYMAP).c $(SRC)
+    SRC := keymaps/keymap_$(KEYMAP).c $(SRC)
 else
-    SRC := keymap_default.c $(SRC)
+    SRC := keymaps/keymap_yang.c $(SRC)
 endif
 
 CONFIG_H = config.h
-
 
 # MCU name
 #MCU = at90usb1287
@@ -122,10 +120,9 @@ MOUSEKEY_ENABLE = yes	# Mouse keys(+4700)
 EXTRAKEY_ENABLE = yes	# Audio control and System control(+450)
 CONSOLE_ENABLE = yes	# Console for debug(+400)
 COMMAND_ENABLE = yes    # Commands for debug and configuration
-#SLEEP_LED_ENABLE = yes  # Breathing sleep LED during USB suspend
-NKRO_ENABLE = yes	# USB Nkey Rollover - not yet supported in LUFA
-
-
+# Do not enable SLEEP_LED_ENABLE. it uses the same timer as BACKLIGHT_ENABLE
+# SLEEP_LED_ENABLE = yes  # Breathing sleep LED during USB suspend
+NKRO_ENABLE = yes		# USB Nkey Rollover - if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
 BACKLIGHT_ENABLE = yes  # Enable keyboard backlight functionality
 # MIDI_ENABLE = YES 		# MIDI controls
 # UNICODE_ENABLE = YES 		# Unicode
@@ -148,18 +145,3 @@ VPATH += $(TOP_DIR)
 VPATH += $(TMK_DIR)
 
 include $(TOP_DIR)/quantum/quantum.mk
-
-
-# Optimize size but this may cause error "relocation truncated to fit"
-#EXTRALDFLAGS = -Wl,--relax
-
-# Search Path
-#VPATH += $(TARGET_DIR)
-#VPATH += $(TMK_DIR)
-
-
-
-include $(TMK_DIR)/protocol/lufa.mk
-include $(TMK_DIR)/common.mk
-include $(TMK_DIR)/rules.mk
-

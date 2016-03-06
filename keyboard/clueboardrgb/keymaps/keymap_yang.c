@@ -14,15 +14,15 @@
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* Keymap _BW: (Base Windows) Windows Default Layer
    * ,-----------------------------------------------------------.
-   * |Esc~| 1|  2|  3|  4|  5|  6|  7|  8|  9|  0|  -|  =|Backsp|Backsp (!!!NOTE!!! THE RIGHT MOST BUTTON ON THE SPLIT BS IS k49 on the grid (satan.h)!!|
+   * |Esc~| 1|  2|  3|  4|  5|  6|  7|  8|  9|  0|  -|  =|Backsp|Backsp|  PGUP
    * |-----------------------------------------------------------|
-   * |Tab  |  Q|  W|  E|  R|  T|  Y|  U|  I|  O|  P|  [|  ]|    \|
+   * |Tab  |  Q|  W|  E|  R|  T|  Y|  U|  I|  O|  P|  [|  ]|    \|        PGDN
    * |-----------------------------------------------------------|
    * |CAPS/FL|  A|  S|  D|  F|  G|  H|  J|  K|  L|  ;|  '|Return |
    * |-----------------------------------------------------------|
-   * |Shift|shift   |  Z|  X|  C|  V|  B|  N|  M|  ,|  .|  /|Shift  |Backlight step|
+   * |Shift|shift|  Z|  X|  C|  V|  B|  N|  M|  ,|  .|  /|Shift|shift|    UP
    * |-----------------------------------------------------------|
-   * |Ctrl|Gui |Alt |      Space            |Alt |FN  |CTRL      |
+   * |Ctrl|Gui |Alt |      Space            |Alt |FN  |CTRL      | LEFT | DOWN | RIGHT
    * `-----------------------------------------------------------'
    *
 */

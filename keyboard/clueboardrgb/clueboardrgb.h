@@ -30,10 +30,7 @@
 */
 
 
-/* clueboard keymap definition macro
- *  This is an approximate diagram of every supported key location on the
- *  clueboard. The default ANSI, ISO, and JP layouts leave some of these
- *  switch positions inaccessible.
+/* 
  * ,-----------------------------------------------------------.  ,---.
  * | 00| 01| 02| 03| 04| 05| 06| 07| 08| 09| 0A| 0B| 0C| 0D| 0E|  | 0F|
  * |-----------------------------------------------------------|  |---|

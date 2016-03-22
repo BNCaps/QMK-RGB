@@ -48,10 +48,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
  [_FL] = KEYMAP(
    KC_GRV,  KC_F1,   KC_F2,     KC_F3,    KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,     KC_F10,    KC_F11,    KC_F12,    KC_DEL, KC_DEL, KC_HOME, \
-   KC_TRNS, KC_TRNS, KC_UP,     F(1),     F(2),    F(3),    F(4),    F(5),    F(6),    F(7),      F(8),      BL_DEC,    BL_INC,    BL_TOGG, KC_END, \
-   KC_TRNS, KC_LEFT, KC_DOWN,   KC_RGHT,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,   KC_HOME,   KC_PGUP,   BL_STEP,   BL_STEP, \
+   KC_TRNS, KC_TRNS, KC_UP,     F(1),     F(2),    F(3),    F(4),    F(5),    F(6),    F(7),      F(8),      KC_TRNS,    KC_TRNS,    KC_TRNS, KC_END, \
+   KC_TRNS, KC_LEFT, KC_DOWN,   KC_RGHT,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,   KC_HOME,   KC_PGUP,   KC_TRNS,   KC_TRNS, \
    KC_TRNS, KC_TRNS, KC_TRNS,   KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_VOLD, KC_VOLU, KC_MUTE,   KC_END,    KC_PGDN,   KC_TRNS,   KC_TRNS, KC_TRNS,\
-   KC_TRNS, KC_TRNS, KC_TRNS,          KC_TRNS,                               KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, BL_STEP),
+   KC_TRNS, KC_TRNS, KC_TRNS,          KC_TRNS,                               KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
  
 };
 

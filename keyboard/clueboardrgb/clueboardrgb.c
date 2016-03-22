@@ -13,9 +13,9 @@ void * matrix_scan_user(void) {
 void * matrix_init_kb(void) {
 	// put your keyboard start-up code here
 	// runs once when the firmware starts up
-	#ifdef BACKLIGHT_ENABLE
-    	pwm_led_init();
-	#endif
+	//#ifdef BACKLIGHT_ENABLE
+    //	pwm_led_init();
+	//#endif
 
 	#ifdef RGBLIGHT_ENABLE
 	    rgblight_init();
@@ -27,7 +27,7 @@ void * matrix_init_kb(void) {
 		(*matrix_init_user)();
 	}
 	 // Set our LED pins as output
-     //DDRB |= (1<<4);
+     DDRB |= (1<<4);
 };
 
 void * matrix_scan_kb(void) {

@@ -73,9 +73,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 )
 
 /* ws2812 RGB LED */
-#define ws2812_PORTREG  PORTE
-#define ws2812_DDRREG   DDRE
-#define ws2812_pin PE2
+#define ws2812_PORTREG  PORTB
+#define ws2812_DDRREG   DDRB
+#define ws2812_pin PB2
 #define RGBLED_NUM 8     // Number of LEDs
 #ifndef RGBLIGHT_HUE_STEP
 #define RGBLIGHT_HUE_STEP 10

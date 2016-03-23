@@ -27,7 +27,7 @@ void * matrix_init_kb(void) {
 		(*matrix_init_user)();
 	}
 	 // Set our LED pins as output
-     DDRB |= (1<<4);
+     DDRB |= (1<<2);
 };
 
 void * matrix_scan_kb(void) {

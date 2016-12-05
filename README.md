@@ -1,6 +1,11 @@
 # This is my personal clone of the QMK firmware!
 
+
 ----------------------------------------------------------------
+# IT IS NOT RECOMMENDED TO USE THIS FIRMWARE, YOU WILL NOT RECIEVE HELP, PLEASE DO NOT OPEN ISSUES ON THIS IF YOU NEED HELP, GOTO GEEKHACK FOR HELP
+----------------------------------------------------------------
+
+
 
 # Quantum MK Firmware
 
